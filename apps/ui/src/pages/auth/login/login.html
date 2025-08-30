@@ -1,0 +1,47 @@
+<title>TechStore | Giriş Yap</title>
+
+<div class="login-header">
+                        <div class="login-icon">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <h1>Hoş Geldiniz</h1>
+                        <p>Giriş yaptıktan sonra alışverişe devam edebilirsiniz.</p>
+                    </div>
+
+                    <div class="login-tabs">
+                        <button routerLink="/auth/login" class="tab-btn active" data-tab="login active">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Giriş Yap
+                        </button>
+                        <button routerLink="/auth/register" class="tab-btn" data-tab="register">
+                            <i class="fas fa-user-plus"></i>
+                            Kayıt Ol
+                        </button>
+                    </div>
+
+                    <!-- Register Form -->
+                    <div class="tab-content active">
+                        <form #form="ngForm" autocomplete="off" (ngSubmit)="signIn(form)" class="auth-form">
+                           
+                            <div class="form-group">
+                                <label for="userName">Kullanıcı Adı</label>
+                                <div class="input-group">
+                                    <i class="fas fa-person"></i>
+                                    <input type="text" ngModel name="userName" required placeholder="kullanıcı adı" required>
+                                </div>
+                            </div>                           
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="registerPassword">Şifre</label>
+                                    <div class="input-group">
+                                        <i class="fas fa-lock"></i>
+                                        <input type="password" ngModel name="password"required placeholder="********" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="auth-btn">
+                                <i class="fas fa-sign-in-alt"></i>
+                                Giriş Yap
+                            </button>
+                        </form>
+                    </div>

@@ -1,0 +1,40 @@
+<app-blank [pageTitle]="title()" [breadCrumps]="breadCrumps()" />
+
+<div class="row">
+    <div class="col-md-4 col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>{{title()}}</h4>
+            </div>
+            <div class="card-body">
+                <form #form="ngForm" autocomplete="off" (ngSubmit)="save(form)">
+                    <div class="form-group mt-2">
+                        <label>Kategori</label>
+                        <flexi-select [data]="categoryData()" language="tr" [required]="true" label="name" value="id"
+                           name="categoryId" [(ngModel)]="data().categoryId" [loading]="categoryLoading()" (ngModelChange)="setCategoryName()" />
+                    </div>
+                    <div class="form-group mt-2">
+                        <label>Ürün Adı</label>
+                        <input type="text" class="form-control" [(ngModel)]="data().name" name="name">
+                    </div>
+                    <div class="form-group mt-2">
+                        <label>Ürün Fotoğrafı</label>
+                        <input type="text" class="form-control" [(ngModel)]="data().imageUrl" name="imageUrl">
+                    </div>
+                    <div class="form-group mt-2">
+                        <label>Birim Fiyat</label>
+                        <input type="text" class="form-control" [(ngModel)]="data().price" name="price"
+                            mask="separator.2" thousandSeparator="." decimalMarker=",">
+                    </div>
+                    <div class="form-group mt-2">
+                        <label>Adedi</label>
+                        <input type="text" class="form-control" [(ngModel)]="data().stock" name="stock">
+                    </div>
+                    <div class="form-group mt-2 d-flex justify-content-end">
+                        <button type="submit" class="btn btn-primary">{{btnName()}}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

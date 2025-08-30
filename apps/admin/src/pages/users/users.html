@@ -1,0 +1,40 @@
+<app-blank pageTitle="Kullanıcı" [breadCrumps]="breadCrumps()" />
+
+<flexi-grid [data]="data()" [loading]="loading()" [showCaption]="true" captionTitle="Kulanıcılar"
+    [showExportExcelBtn]="true" exportExcelFileName="users" (onRefresh)="results.reload()" language="tr">
+
+    <ng-template flexiGridCaptionCommandTemplate>
+        <flexi-button routerLink='/users/create' btnIcon="add" btnColor="primary" title="Kullanıcı Ekle" flexiTooltip />
+    </ng-template>
+
+    <flexi-grid-column field="firstName" title="Adı" />
+    <flexi-grid-column field="lastName" title="Soyadı" />
+    <flexi-grid-column field="fullName" title="Tam Ad" />
+    <flexi-grid-column field="userName" title="Kullanıcı Adı" />
+    <flexi-grid-column field="email" title="E-Posta" />
+    <flexi-grid-column field="isAdmin" title="Admin Mi?" filterType="boolean" [booleanData]="['Admin', 'Admin Değil']">
+        <ng-template flexiGridCellTemplate let-item>
+            <div class="d-flex justify-content-center">
+                <div class="form-check form-switch">
+                    <input
+                    (change)="changeIsAdmin(item)" 
+                    class="form-check-input" 
+                    type="checkbox" 
+                    role="switch"
+                    [id]="item.id"
+                    [(ngModel)]="item.isAdmin" 
+                    [name]="item.id"
+                    />
+                </div>
+            </div>
+        </ng-template>
+    </flexi-grid-column>
+
+    <ng-template flexiGridColumnCommandTemplate let-item>
+        <flexi-button [routerLink]="['/','users','edit',item.id]" btnIcon="edit" btnColor="info" btnSize="small"
+            title="Güncelle" flexiTooltip />
+        <flexi-button (click)="delete(item.id)" btnIcon="delete" btnColor="danger" btnSize="small" title="Sil"
+            flexiTooltip />
+    </ng-template>
+
+</flexi-grid>
